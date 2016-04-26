@@ -7,6 +7,10 @@
     "name": "Taneli Hartikainen",
     "email": "taneli.hartikainen@digia.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DigiaCloudServices/generator-senketsu.git"
+  },
   "dependencies": {
     "change-case": "2.3.1",
     "yeoman-generator": "0.22.3"
