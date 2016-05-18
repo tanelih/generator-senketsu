@@ -1,4 +1,4 @@
-import test            from 'tape'
+import test            from 'ava'
 import thunk           from 'redux-thunk'
 import createMockStore from 'redux-mock-store'
 
@@ -13,6 +13,6 @@ const mockStore = createMockStore([ thunk ])
 
 <%_ actions.forEach(function(action) { _%>
 test.skip('actions/<%= name %>#<%= action.creator %>', t => {
-  return t.end()
+  return t.fail()
 })
 <%_ }) _%>

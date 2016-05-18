@@ -1,4 +1,4 @@
-import test from 'tape'
+import test from 'ava'
 
 import thunk           from 'redux-thunk'
 import createMockStore from 'redux-mock-store'
@@ -11,12 +11,11 @@ import {
 
 const mockStore = createMockStore([thunk])
 
-test('actions/route#setRoute', t => {
+test('actions/route::setRoute', t => {
   const store = mockStore({ })
   store.dispatch(setRoute({ path: '/' }))
 
-  t.deepEqual(store.getActions(), [
+  return t.deepEqual(store.getActions(), [
     { type: SET_ROUTE, payload: { path: '/' } }
   ])
-  return t.end()
 })

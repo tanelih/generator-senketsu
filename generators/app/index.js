@@ -43,15 +43,9 @@ module.exports = yo.Base.extend({
       this.templatePath('.eslintrc'),
       this.destinationPath('.eslintrc'))
 
-
     this.fs.copy(
       this.templatePath('webpack.config.js'),
       this.destinationPath('webpack.config.js'))
-
-
-    this.fs.copy(
-      this.templatePath('webpack.config.test.js'),
-      this.destinationPath('webpack.config.test.js'))
 
     this.fs.copyTpl(
       this.templatePath('package.json'),

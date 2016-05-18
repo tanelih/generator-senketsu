@@ -1,7 +1,7 @@
-import test from 'tape'
+import test from 'ava'
+
 import reducer, { initialState } from 'app/reducers/locale'
 
 test('reducers/locale', t => {
-  t.deepEqual(reducer(undefined, { }), initialState)
-  return t.end()
+  return t.deepEqual(reducer(undefined, { }), initialState)
 })
