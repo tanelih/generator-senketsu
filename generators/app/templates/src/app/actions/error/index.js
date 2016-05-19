@@ -1,7 +1,8 @@
-export const SET_ERROR = 'SET_ERROR'
+import createActionCreator from 'app/utils/create-action-creator'
 
-/**
- * Publish the error to the application's state.
- */
-export const setError = (origin, payload) =>
-  ({ type: SET_ERROR, origin, payload })
+
+export const ADD_ERROR    = 'ADD_ERROR'
+export const REMOVE_ERROR = 'REMOVE_ERROR'
+
+export const addError    = createActionCreator(ADD_ERROR)
+export const removeError = createActionCreator(REMOVE_ERROR)

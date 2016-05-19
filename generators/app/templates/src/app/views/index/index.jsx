@@ -30,7 +30,7 @@ export const IndexView = React.createClass({
 
 const smart = connect(
   state => ({
-    route: state.routing,
+
   }))
 
 export default smart(translate(IndexView, require('app/localization.json')))

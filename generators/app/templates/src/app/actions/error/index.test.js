@@ -4,17 +4,18 @@ import thunk           from 'redux-thunk'
 import createMockStore from 'redux-mock-store'
 
 import {
-  setError,
-  SET_ERROR,
+  addError,
+  ADD_ERROR,
 } from 'app/actions/error'
+
 
 const mockStore = createMockStore([thunk])
 
-test('actions/error::setError', t => {
+test('actions/error::addError', t => {
   const store = mockStore([])
-  store.dispatch(setError('SAMPLE_ACTION', new Error('test')))
+  store.dispatch(addError({ origin: 'SAMPLE_ACTION', instance: new Error('test') }))
 
   return t.deepEqual(store.getActions(), [
-    { type: SET_ERROR, origin: 'SAMPLE_ACTION', payload: new Error('test') }
+    { type: ADD_ERROR, payload: { origin: 'SAMPLE_ACTION', instance: new Error('test') } }
   ])
 })

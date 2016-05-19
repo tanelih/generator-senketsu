@@ -1,10 +1,12 @@
 import createReducer from 'app/utils/create-reducer'
-import { SET_ERROR } from 'app/actions/error'
+import { ADD_ERROR, REMOVE_ERROR } from 'app/actions/error'
+
 
 const handlers = {
-  [SET_ERROR]: (state, action) => action.payload,
+  [ADD_ERROR]:    (state, action) => state.concat(action.payload),
+  [REMOVE_ERROR]: (state, action) => state.filter(err => err.origin === action.payload),
 }
 
-export const initialState = null
+export const initialState = []
 
 export default createReducer(handlers, initialState)

@@ -10,17 +10,11 @@ const createStore =
   redux.applyMiddleware(
     reduxRouter.routerMiddleware(router.browserHistory), thunk, logger())(redux.createStore)
 
-const rootReducer = redux.combineReducers({
-  /**
-   * Vendor reducers.
-   */
-  routing: reduxRouter.routerReducer,
+const store = createStore(redux.combineReducers(require('app/reducers').default))
 
-  /**
-   * Custom reducers.
-   */
-  error:  require('app/reducers/error').default,
-  locale: require('app/reducers/locale').default,
-})
+if (module.hot) {
+  module.hot.accept('app/reducers', () =>
+    store.replaceReducer(redux.combineReducers(require('app/reducers').default)))
+}
 
-export default createStore(rootReducer)
+export default store
