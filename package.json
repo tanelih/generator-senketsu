@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DigiaCloudServices/generator-senketsu.git"
+    "url": "https://github.com/tanelih/generator-senketsu.git"
   },
   "dependencies": {
     "change-case": "2.3.1",
