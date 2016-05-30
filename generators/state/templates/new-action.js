@@ -12,11 +12,9 @@ export const <%= action.constant %>_SUCCESS = '<%= action.constant %>_SUCCESS'
 /**
  *
  */
-export const <%= action.creator %> = createActionCreator(<%= action.constant %>,
-  () =>
-  (dispatch, getState) => {
-    dispatch(<%= action.constant %>)
-  })
+export const <%= action.creator %> = () => (dispatch, getState) => {
+  dispatch({ type: <%= action.constant %> })
+})
   <%_ } else { _%>
 
 /**
