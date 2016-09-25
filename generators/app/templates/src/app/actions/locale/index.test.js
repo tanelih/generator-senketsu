@@ -3,10 +3,7 @@ import test from 'ava'
 import thunk           from 'redux-thunk'
 import createMockStore from 'redux-mock-store'
 
-import {
-  setLocale,
-  SET_LOCALE,
-} from 'app/actions/locale'
+import { setLocale } from 'app/actions/locale'
 
 
 const mockStore = createMockStore([thunk])
@@ -16,6 +13,6 @@ test('actions/locale::setLocale', t => {
   store.dispatch(setLocale('en'))
 
   return t.deepEqual(store.getActions(), [
-    { type: SET_LOCALE, payload: 'en' },
+    { type: 'SET_LOCALE', payload: 'en' },
   ])
 })

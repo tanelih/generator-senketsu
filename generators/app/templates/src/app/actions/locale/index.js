@@ -1,9 +1,8 @@
 import createActionCreator from 'app/utils/create-action-creator'
 
-
-export const SET_LOCALE = 'SET_LOCALE'
-
 /**
- * Set the application's currently active locale.
+ * Set the current locale of the application.
+ *
+ * @returns {FSA} - Flux standard action.
  */
-export const setLocale = createActionCreator(SET_LOCALE)
+export const setLocale = createActionCreator('SET_LOCALE')

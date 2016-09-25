@@ -13,17 +13,25 @@ const isObject = target =>
  * Reduction for reading a property.
  */
 const getDeepResource = (localization, key) => {
+  if (!localization) return
+
   if ((isObject(localization[key]) || typeof localization[key] === 'string')) {
     return localization[key]
   }
-  return `Missing string resource for [${Object.keys.join(', ')}]`
 }
 
 /**
  * Wrap given component to provide a 'translate' context.
+ *
+ * @param   {Function} component - The component to wrap.
+ * @param   {Object}   resource  - The translation resource object.
+ * @returns {Function}           - The wrapped component.
  */
 export default function translate(component, resource = {}) {
+
   /**
+   * @class
+   *
    * Context-providing component to wrap the subcomponent.
    */
   const Translator = React.createClass({
@@ -37,8 +45,13 @@ export default function translate(component, resource = {}) {
 
     getChildContext() {
       return {
-        translate: (...keys) =>
-          keys.concat([this.props.locale]).reduce(getDeepResource, resource),
+        translate: (...keys) => {
+          const translation = keys.concat(this.props.locale).reduce(getDeepResource, resource)
+
+          return translation
+            ? translation
+            : `Missing translation for [${keys.concat(this.props.locale).join(' >> ')}]`
+        }
       }
     },
 

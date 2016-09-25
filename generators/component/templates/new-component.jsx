@@ -7,7 +7,9 @@ import { connect }          from 'react-redux'
 
 
 /**
+ * @class
  *
+ * TODO Document me!
  */
 export const <%= name %> = React.createClass({
   render() {

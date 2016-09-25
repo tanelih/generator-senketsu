@@ -23,7 +23,7 @@ module.exports = yo.Base.extend({
         type:    'list',
         name:    'type',
         message: 'Type of component',
-        choices: [ 'view', 'component' ],
+        choices: [ 'container', 'component' ],
       },
       {
         type:    'checkbox',

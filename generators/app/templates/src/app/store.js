@@ -17,4 +17,9 @@ if (module.hot) {
     store.replaceReducer(redux.combineReducers(require('app/reducers').default)))
 }
 
+/**
+ * Redux store containing the application state.
+ *
+ * @type {Object} 
+ */
 export default store

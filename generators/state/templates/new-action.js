@@ -1,27 +1,25 @@
 import createActionCreator from 'app/utils/create-action-creator'
 
-<%_ actions.forEach(function(action) { _%>
-export const <%= action.constant %> = '<%= action.constant %>'
-  <%_ if(action.async) { _%>
-export const <%= action.constant %>_SUCCESS = '<%= action.constant %>_SUCCESS'
-  <%_ } _%>
-<%_ }) _%>
-<%_ actions.forEach(function(action) { _%>
-  <%_ if(action.async) { _%>
 
+<%_ actions.forEach(function(action) { _%>
+  <%_ if(action.async) { _%>
 /**
+ * TODO Document me!
  *
+ * @returns {FSA} - Flux standard action.
  */
 export const <%= action.creator %> = createActionCreator(<%= action.constant %>,
   () =>
   (dispatch, getState) => {
-    dispatch(<%= action.constant %>)
+    dispatch('<%= action.constant %>_SUCCESS')
   })
   <%_ } else { _%>
 
 /**
+ * TODO Document me!
  *
+ * @returns {FSA} - Flux standard action.
  */
-export const <%= action.creator %> = createActionCreator(<%= action.constant %>)
+export const <%= action.creator %> = createActionCreator('<%= action.constant %>')
   <%_ } _%>
 <%_ }) _%>
