@@ -8,11 +8,9 @@ import createActionCreator from 'app/utils/create-action-creator'
  *
  * @returns {FSA} - Flux standard action.
  */
-export const <%= action.creator %> = createActionCreator(<%= action.constant %>,
-  () =>
-  (dispatch, getState) => {
-    dispatch('<%= action.constant %>_SUCCESS')
-  })
+export const <%= action.creator %> = () => (dispatch, getState) => {
+  dispatch({ type: '<%= action.constant %>_SUCCESS' })
+})
   <%_ } else { _%>
 
 /**
