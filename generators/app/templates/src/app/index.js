@@ -11,7 +11,14 @@ import history from 'app/history'
 const application = (
   <Provider store={store}>
     <Router history={syncHistoryWithStore(history, store)}>
-      <Route path="/" component={require('app/containers/index').default} />
+      <Route
+        path="/"
+        getComponent={(location, done) => {
+          require.ensure([], require => {
+            done(null, require('app/containers/index').default)
+          })
+        }}
+      />
     </Router>
   </Provider>
 )

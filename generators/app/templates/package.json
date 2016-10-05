@@ -1,5 +1,5 @@
 {
-  "name": "<%= name %>",
+  "name": "foo",
   "version": "0.0.0",
   "license": "MIT",
   "description": "<%= description %>",
@@ -9,14 +9,16 @@
     "test:once": "NODE_PATH=src ava src/**/*.test.js",
     "test:auto": "NODE_PATH=src ava --watch src/**/*.test.js",
     "test:coverage": "nyc npm run test:once",
-    "start": "kotatsu serve --babel --config webpack.config.js --proxy /api http://localhost:8000 src/index.js",
-    "build": "kotatsu build client --babel --config webpack.config.js --minify src/index.js -o dist"
+    "start": "kotatsu serve --babel --config webpack.config.js --index index.html",
+    "build": "kotatsu build client --babel --minify --config webpack.config.js"
   },
   "ava": {
     "require": "babel-register"
   },
   "dependencies": {
     "isomorphic-fetch": "2.2.1",
+    "preact": "6.2.1",
+    "preact-compat": "3.6.0",
     "react": "15.3.2",
     "react-dom": "15.3.2",
     "react-redux": "4.4.5",
