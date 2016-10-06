@@ -9,6 +9,7 @@ export default {
   /**
    * Custom reducers.
    */
-  errors: require('app/reducers/error').default,
-  locale: require('app/reducers/locale').default,
+  errors: require('app/reducers/error'),
+  locale: require('app/reducers/locale'),
 }
+

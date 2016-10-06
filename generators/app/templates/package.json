@@ -9,7 +9,7 @@
     "test:once": "NODE_PATH=src ava src/**/*.test.js",
     "test:auto": "NODE_PATH=src ava --watch src/**/*.test.js",
     "test:coverage": "nyc npm run test:once",
-    "start": "kotatsu serve --babel --config webpack.config.js --index index.html",
+    "start": "kotatsu serve --babel --config webpack.config.js --index index.html --html",
     "build": "kotatsu build client --babel --minify --config webpack.config.js"
   },
   "ava": {
@@ -34,6 +34,7 @@
   "devDependencies": {
     "autoprefixer": "6.4.1",
     "ava": "0.16.0",
+    "babel-plugin-add-module-exports": "0.2.1",
     "babel-preset-es2015": "6.14.0",
     "babel-preset-react": "6.11.1",
     "babel-preset-react-hmre": "1.1.1",

@@ -4,15 +4,13 @@
     "react",
     "stage-3"
   ],
+  "plugins": [
+    "add-module-exports"
+  ],
   "env": {
     "development": {
-      "plugins": [["react-transform", {
-        "transforms": [{
-          "locals":    ["module"],
-          "imports":   ["react"],
-          "transform": "react-transform-hmr"
-        }]
-      }]]
+      "presets": ["react-hmre"]
     }
   }
 }
+

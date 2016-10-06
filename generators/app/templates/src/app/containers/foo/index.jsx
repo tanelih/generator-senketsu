@@ -1,4 +1,4 @@
-import 'app/containers/index/style.sass'
+import 'app/containers/foo/style.sass'
 
 import React, { PropTypes } from 'react'
 import { connect }          from 'react-redux'
@@ -6,12 +6,13 @@ import { Link }             from 'react-router'
 
 import translate from 'app/hoc/translate'
 
+
 /**
  * @class
  *
- * Container for the 'index' view.
+ * Container for the 'foo' view.
  */
-export const IndexContainer = React.createClass({
+export const FooContainer = React.createClass({
   propTypes: {
     route: PropTypes.object.isRequired,
   },
@@ -20,8 +21,8 @@ export const IndexContainer = React.createClass({
   },
   render() {
     return (
-      <article className="index-container">
-        <Link to="/foo">Foo</Link>
+      <article className="foo-container">
+        <Link to="/">Index</Link>
         {this.context.translate('GREETING', 'FOR_YOU')}
         <pre>
           {JSON.stringify(this.props.route, null, 2)}
@@ -36,4 +37,4 @@ const smart = connect(
 
   }))
 
-export default smart(translate(IndexContainer, require('app/localization.json')))
+export default smart(translate(FooContainer, require('app/localization.json')))
