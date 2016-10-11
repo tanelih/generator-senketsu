@@ -8,7 +8,11 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import store   from 'app/store'
 import history from 'app/history'
 
-
+/**
+ * The application root element.
+ *
+ * @type {JSX}
+ */
 const application = (
   <Provider store={store}>
     <Router history={syncHistoryWithStore(history, store)}>
@@ -17,13 +21,6 @@ const application = (
         getComponent={(location, done) =>
           require.ensure([], require =>
             done(null, require('app/containers/index').default))
-        }
-      />
-      <Route
-        path="/foo"
-        getComponent={(location, done) =>
-          require.ensure([], require =>
-            done(null, require('app/containers/foo').default))
         }
       />
     </Router>

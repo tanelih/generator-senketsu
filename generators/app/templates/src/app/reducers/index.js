@@ -1,15 +1,15 @@
-import * as reduxRouter from 'react-router-redux'
+import { routerReducer } from 'react-router-redux'
 
 export default {
   /**
    * Vendor reducers.
    */
-  routing: reduxRouter.routerReducer,
+  routing: routerReducer,
 
   /**
    * Custom reducers.
    */
-  errors: require('app/reducers/error'),
-  locale: require('app/reducers/locale'),
+  errors: require('app/reducers/error').default,
+  locale: require('app/reducers/locale').default,
 }
 

@@ -67,3 +67,4 @@ export default function translate(component, resource = {}) {
 
   return smart(Translator)
 }
+

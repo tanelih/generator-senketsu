@@ -9,7 +9,7 @@
     "test:once": "NODE_PATH=src ava src/**/*.test.js",
     "test:auto": "NODE_PATH=src ava --watch src/**/*.test.js",
     "test:coverage": "nyc npm run test:once",
-    "start": "kotatsu serve --babel --config webpack.config.js --index index.html --html",
+    "start": "kotatsu serve --babel --config webpack.config.js --index index.html",
     "build": "kotatsu build client --babel --minify --config webpack.config.js"
   },
   "ava": {

@@ -7,3 +7,4 @@ const handlers = {
 export const initialState = 'en'
 
 export default createReducer(handlers, initialState)
+

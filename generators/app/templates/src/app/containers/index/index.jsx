@@ -2,7 +2,6 @@ import 'app/containers/index/style.sass'
 
 import React, { PropTypes } from 'react'
 import { connect }          from 'react-redux'
-import { Link }             from 'react-router'
 
 import translate from 'app/hoc/translate'
 
@@ -21,7 +20,6 @@ export const IndexContainer = React.createClass({
   render() {
     return (
       <article className="index-container">
-        <Link to="/foo">Foo</Link>
         {this.context.translate('GREETING', 'FOR_YOU')}
         <pre>
           {JSON.stringify(this.props.route, null, 2)}
@@ -31,9 +29,15 @@ export const IndexContainer = React.createClass({
   },
 })
 
+/**
+ * Redux store bindings.
+ *
+ * @type {Function}
+ */
 const smart = connect(
   state => ({
 
-  }))
+  })
+)
 
 export default smart(translate(IndexContainer, require('app/localization.json')))
