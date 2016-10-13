@@ -10,21 +10,25 @@ import * as reduxRouter from 'react-router-redux'
 /**
  * Redux store containing the application state.
  *
- * @type {Object}
+ * @param   {Object} history - Depending on whether we're at the server or in
+ *                             the browser, this might be something else.
+ * @returns {Object}         - Redux store.
  */
-const store = redux.createStore(
-  redux.combineReducers(require('app/reducers')),
-  redux.applyMiddleware(
-    reduxRouter.routerMiddleware(require('app/history')),
-    thunk,
-    logger()
+export default function createStore(history) {
+  const store = redux.createStore(
+    redux.combineReducers(require('app/reducers')),
+    redux.applyMiddleware(
+      reduxRouter.routerMiddleware(history),
+      thunk,
+      logger()
+    )
   )
-)
 
-if (module.hot) {
-  module.hot.accept('app/reducers', () =>
-    store.replaceReducer(redux.combineReducers(require('app/reducers'))))
+  if (module.hot) {
+    module.hot.accept('app/reducers', () =>
+      store.replaceReducer(redux.combineReducers(require('app/reducers'))))
+  }
+
+  return store
 }
 
-
-export default store

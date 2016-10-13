@@ -6,16 +6,19 @@
   "scripts": {
     "lint": "eslint src",
     "test": "npm run test:once",
-    "test:once": "NODE_PATH=src ava src/**/*.test.js",
-    "test:auto": "NODE_PATH=src ava --watch src/**/*.test.js",
+    "test:once": "ava src/**/*.test.js",
+    "test:auto": "ava --watch src/**/*.test.js",
     "test:coverage": "nyc npm run test:once",
     "start": "kotatsu serve --babel --config webpack.config.js --index index.html",
+    "start:prod": "node src/server.js",
     "build": "kotatsu build client --babel --minify --config webpack.config.js"
   },
   "ava": {
     "require": "babel-register"
   },
   "dependencies": {
+    "app-module-path": "2.1.0",
+    "ignore-styles": "5.0.1",
     "isomorphic-fetch": "2.2.1",
     "preact": "6.2.1",
     "preact-compat": "3.6.0",

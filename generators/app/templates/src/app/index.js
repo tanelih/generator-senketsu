@@ -5,8 +5,16 @@ import { Provider }             from 'react-redux'
 import { Router, Route }        from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
-import store   from 'app/store'
-import history from 'app/history'
+import routes      from 'app/routes'
+import history     from 'app/history'
+import createStore from 'app/store'
+
+/**
+ * Application store.
+ *
+ * @type {Object}
+ */
+const store = createStore(history)
 
 /**
  * The application root element.
@@ -16,13 +24,7 @@ import history from 'app/history'
 const application = (
   <Provider store={store}>
     <Router history={syncHistoryWithStore(history, store)}>
-      <Route
-        path="/"
-        getComponent={(location, done) =>
-          require.ensure([], require =>
-            done(null, require('app/containers/index').default))
-        }
-      />
+      {routes}
     </Router>
   </Provider>
 )
