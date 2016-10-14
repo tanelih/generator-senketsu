@@ -17,12 +17,12 @@ import * as reduxRouter from 'react-router-redux'
 export default function createStore(history) {
   const store = redux.createStore(
     redux.combineReducers(require('app/reducers').default),
+    global.APP_INITIAL_STATE || {},
     redux.applyMiddleware(
       reduxRouter.routerMiddleware(history),
       thunk,
       logger()
-    ),
-    global.APP_INITIAL_STATE || null
+    )
   )
 
   if (module.hot) {
