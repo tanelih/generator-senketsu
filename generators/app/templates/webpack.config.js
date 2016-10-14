@@ -4,6 +4,12 @@ var path              = require('path')
 var webpack           = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+
+process.env.NODE_ENV = process.env.npm_lifecycle_event === 'build'
+  ? 'production'
+  : 'development'
+
+
 module.exports = {
   entry: {
     vendor: [
@@ -19,6 +25,9 @@ module.exports = {
     filename: 'app.bundle.js',
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+    }),
     new ExtractTextPlugin('app.bundle.css', {
       disable: process.env.NODE_ENV !== 'production'
     }),
@@ -33,7 +42,7 @@ module.exports = {
       'react':     'preact-compat',
       'react-dom': 'preact-compat',
     },
-    extensions: [ '', '.js', '.jsx' ],
+    extensions: ['', '.js', '.jsx'],
   },
   module: {
     loaders: [
@@ -50,3 +59,4 @@ module.exports = {
     return [require('autoprefixer')]
   },
 }
+

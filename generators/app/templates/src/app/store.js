@@ -16,17 +16,19 @@ import * as reduxRouter from 'react-router-redux'
  */
 export default function createStore(history) {
   const store = redux.createStore(
-    redux.combineReducers(require('app/reducers')),
+    redux.combineReducers(require('app/reducers').default),
     redux.applyMiddleware(
       reduxRouter.routerMiddleware(history),
       thunk,
       logger()
-    )
+    ),
+    global.APP_INITIAL_STATE || null
   )
 
   if (module.hot) {
     module.hot.accept('app/reducers', () =>
-      store.replaceReducer(redux.combineReducers(require('app/reducers'))))
+      store.replaceReducer(
+        redux.combineReducers(require('app/reducers').default)))
   }
 
   return store

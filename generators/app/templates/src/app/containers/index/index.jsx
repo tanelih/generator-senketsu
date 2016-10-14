@@ -18,12 +18,10 @@ export const IndexContainer = React.createClass({
     translate: PropTypes.func.isRequired,
   },
   render() {
+    console.log(this.props.route)
     return (
       <article className="index-container">
         {this.context.translate('GREETING', 'FOR_YOU')}
-        <pre>
-          {JSON.stringify(this.props.route, null, 2)}
-        </pre>
       </article>
     )
   },

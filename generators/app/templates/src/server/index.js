@@ -1,5 +1,6 @@
 'use strict'
 
+const path    = require('path')
 const express = require('express')
 
 const React         = require('react')
@@ -11,8 +12,8 @@ const match                = require('react-router').match
 const createMemoryHistory  = require('react-router').createMemoryHistory
 const syncHistoryWithStore = require('react-router-redux').syncHistoryWithStore
 
-const routes      = require('app/routes')
-const createStore = require('app/store')
+const routes      = require('app/routes').default
+const createStore = require('app/store').default
 
 /**
  * Express application.
@@ -20,6 +21,9 @@ const createStore = require('app/store')
  * @type {Object}
  */
 const app = express()
+
+  .use('/build',
+    express.static(path.join(__dirname, '../../build')))
 
   .use((req, res, next) => {
     const location   = req.url
@@ -38,8 +42,6 @@ const app = express()
         return next()
       }
 
-      console.log(props)
-
       const application = (
         <Provider store={store}>
           <RouterContext {...props} />
@@ -50,7 +52,8 @@ const app = express()
     })
   })
 
-  .listen(3000 || process.env.PORT, () => console.log('Listening...'))
+  .listen(process.env.PORT || 3000,
+    () => console.log(`Listening at ${process.env.PORT || 3000}`))
 
 
 /**
@@ -67,7 +70,7 @@ const template = (content, state) => `
     <title><%= name %></title>
     <link rel="stylesheet" type="text/css" href="/build/app.bundle.css">
     <script>
-      ${JSON.stringify(state)}
+      window.APP_INITIAL_STATE = ${JSON.stringify(state)}
     </script>
   </head>
   <body>
