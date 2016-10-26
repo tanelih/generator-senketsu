@@ -12,17 +12,11 @@ import translate from 'app/hoc/translate'
  *
  * TODO Documentation
  */
-<%_ if (isStateful) { _%>
+<%_ if (isStateful || isContainer) { _%>
 export class <%= name%> extends React.Component {
   static propTypes = {
 
   }
-
-<%_ if (hasContext && isContainer) { _%>
-  static contextTypes = {
-    translate: React.PropTypes.func.isRequired,
-  }
-<%_ } _%>
 
   getInitialState () => {
     return {

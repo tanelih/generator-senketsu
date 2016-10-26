@@ -20,8 +20,6 @@
     "app-module-path": "2.1.0",
     "ignore-styles": "5.0.1",
     "isomorphic-fetch": "2.2.1",
-    "preact": "6.2.1",
-    "preact-compat": "3.6.0",
     "react": "15.3.2",
     "react-dom": "15.3.2",
     "react-redux": "4.4.5",
