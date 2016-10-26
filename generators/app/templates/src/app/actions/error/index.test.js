@@ -5,16 +5,15 @@ import test            from 'ava'
 import thunk           from 'redux-thunk'
 import createMockStore from 'redux-mock-store'
 
-import { addError } from 'app/actions/error'
-
+import { clearError } from 'app/actions/error'
 
 const mockStore = createMockStore([thunk])
 
-test('actions/error::addError', t => {
+test('actions/error::clearError', t => {
   const store = mockStore([])
-  store.dispatch(addError({ origin: 'SAMPLE_ACTION', instance: new Error('test') }))
+  store.dispatch(clearError('LOGIN'))
 
   return t.deepEqual(store.getActions(), [
-    { type: 'ADD_ERROR', payload: { origin: 'SAMPLE_ACTION', instance: new Error('test') } },
+    { type: 'CLEAR_ERROR', payload: 'LOGIN' },
   ])
 })

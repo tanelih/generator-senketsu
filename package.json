@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "change-case": "2.3.1",
+    "command-exists": "1.0.2",
     "yeoman-generator": "0.22.3"
   },
   "devDependencies": {

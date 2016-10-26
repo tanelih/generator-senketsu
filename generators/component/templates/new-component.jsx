@@ -14,7 +14,6 @@ import translate from 'app/hoc/translate'
  */
 <%_ if (isStateful) { _%>
 export class <%= name%> extends React.Component {
-
   static propTypes = {
 
   }
@@ -38,11 +37,11 @@ export class <%= name%> extends React.Component {
   }
 })
 <%_ } else { _%>
-  <%_ if (hasContext) { _%>
+<%_ if (hasContext) { _%>
 export const <%= name %> = (props, context) => (
-  <%_ } else { _%>
+<%_ } else { _%>
 export const <%= name %> = props => (
-  <%_ } %>
+<%_ } _%>
   <div className="<%= file %>-<%= type %>" />
 )
 
@@ -50,11 +49,11 @@ export const <%= name %> = props => (
 
 }
 
-  <%_ if (hasContext && isContainer) { _%>
+<%_ if (hasContext && isContainer) { _%>
 <%= name %>.contextTypes = {
   translate: React.PropTypes.func.isRequired,
 }
-  <%_ } _%>
+<%_ } _%>
 <%_ } _%>
 
 <%_ if (isContainer) { _%>

@@ -1,5 +1,6 @@
 'use strict'
 
+var ce = require('command-exists')
 var yo = require('yeoman-generator')
 
 /**
@@ -48,6 +49,10 @@ module.exports = yo.Base.extend({
       this.destinationPath('webpack.config.js'))
 
     this.fs.copyTpl(
+      this.templatePath('yarn.lock'),
+      this.destinationPath('yarn.lock'))
+
+    this.fs.copyTpl(
       this.templatePath('package.json'),
       this.destinationPath('package.json'), this.props)
 
@@ -57,6 +62,12 @@ module.exports = yo.Base.extend({
   },
 
   install: function() {
-    this.installDependencies()
+    var self = this
+    ce('yarn', function(err, exists) {
+      if (exists) {
+        return self.spawnCommand('yarn', ['install'])
+      }
+      return self.npmInstall()
+    })
   }
 })
