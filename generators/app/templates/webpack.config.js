@@ -1,14 +1,13 @@
-'use strict'
+/* eslint-disable global-require */
 
-var path              = require('path')
-var webpack           = require('webpack')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-
+const path              = require('path')
+const webpack           = require('webpack')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 process.env.NODE_ENV = process.env.npm_lifecycle_event === 'build'
   ? 'production'
   : 'development'
-
 
 module.exports = {
   entry: {
@@ -18,10 +17,10 @@ module.exports = {
       'react-router',
       'react-router-redux',
     ],
-    app: 'index.js'
+    app: 'index.js',
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path:     path.resolve(__dirname, 'build'),
     filename: 'app.bundle.js',
   },
   plugins: [
@@ -29,25 +28,30 @@ module.exports = {
       'process.env.NODE_ENV': '"production"',
     }),
     new ExtractTextPlugin('app.bundle.css', {
-      disable: process.env.NODE_ENV !== 'production'
+      disable:   process.env.NODE_ENV !== 'production',
+      allChunks: true,
+    }),
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        discardComments: {
+          removeAll: true,
+        },
+      },
+      canPrint: false,
     }),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
   ],
   resolve: {
     root: [
       path.resolve('src'),
-      path.resolve('node_modules')
+      path.resolve('node_modules'),
     ],
-    alias: {
-      'react':     'preact-compat',
-      'react-dom': 'preact-compat',
-    },
     extensions: ['', '.js', '.jsx'],
   },
   module: {
     loaders: [
       {
-        test: /\.sass$/,
+        test:   /\.sass$/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
           'css-loader!postcss-loader!sass-loader?indentedSyntax=true'
@@ -55,8 +59,14 @@ module.exports = {
       },
     ],
   },
-  postcss: function() {
-    return [require('autoprefixer')]
+  postcss() {
+    return [
+      require('autoprefixer'),
+      require('postcss-assets')({ loadPaths: ['src/res'] }),
+      require('postcss-font-magician'),
+    ]
+  },
+  sassConfig: {
+    importer: require('node-sass-importer'),
   },
 }
-

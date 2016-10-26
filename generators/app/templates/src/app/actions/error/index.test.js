@@ -1,5 +1,7 @@
-import test from 'ava'
+/* eslint-disable arrow-parens */
+/* eslint-disable arrow-body-style */
 
+import test            from 'ava'
 import thunk           from 'redux-thunk'
 import createMockStore from 'redux-mock-store'
 
@@ -13,6 +15,6 @@ test('actions/error::addError', t => {
   store.dispatch(addError({ origin: 'SAMPLE_ACTION', instance: new Error('test') }))
 
   return t.deepEqual(store.getActions(), [
-    { type: 'ADD_ERROR', payload: { origin: 'SAMPLE_ACTION', instance: new Error('test') } }
+    { type: 'ADD_ERROR', payload: { origin: 'SAMPLE_ACTION', instance: new Error('test') } },
   ])
 })

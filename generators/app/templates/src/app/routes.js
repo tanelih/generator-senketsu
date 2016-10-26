@@ -15,7 +15,6 @@ export default [
       require.ensure([], require =>
         done(null, require('app/containers/index').default))
     },
-    path: '/'
-  }
+    path: '/',
+  },
 ]
-

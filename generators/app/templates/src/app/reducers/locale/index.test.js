@@ -1,5 +1,7 @@
-import test from 'ava'
+/* eslint-disable arrow-parens */
+/* eslint-disable arrow-body-style */
 
+import test from 'ava'
 import reducer, { initialState } from 'app/reducers/locale'
 
 test('reducers/locale', t => {

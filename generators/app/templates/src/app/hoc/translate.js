@@ -1,23 +1,25 @@
 import React, { PropTypes } from 'react'
-import { connect }          from 'react-redux'
+import { connect }          from 'react-redux'
 
 /**
  * Make sure given target is an object.
  */
 const isObject = target =>
-	!Array.isArray(target) &&
-	!(target instanceof String) &&
-	!!target && typeof target === 'object'
+  !Array.isArray(target) &&
+  !(target instanceof String) &&
+  !!target && typeof target === 'object'
 
 /**
  * Reduction for reading a property.
  */
 const getDeepResource = (localization, key) => {
-  if (!localization) return
+  if (!localization) return undefined
 
   if ((isObject(localization[key]) || typeof localization[key] === 'string')) {
     return localization[key]
   }
+
+  return undefined
 }
 
 /**
@@ -28,7 +30,6 @@ const getDeepResource = (localization, key) => {
  * @returns {Function}           - The wrapped component.
  */
 export default function translate(component, resource = {}) {
-
   /**
    * @class
    *
@@ -38,20 +39,16 @@ export default function translate(component, resource = {}) {
     propTypes: {
       locale: PropTypes.string.isRequired,
     },
-
     childContextTypes: {
       translate: PropTypes.func.isRequired,
     },
-
     getChildContext() {
       return {
         translate: (...keys) => {
           const translation = keys.concat(this.props.locale).reduce(getDeepResource, resource)
-
           return translation
-            ? translation
-            : `Missing translation for [${keys.concat(this.props.locale).join(' >> ')}]`
-        }
+            || `Missing translation for [${keys.concat(this.props.locale).join(' >> ')}]`
+        },
       }
     },
 
@@ -67,4 +64,3 @@ export default function translate(component, resource = {}) {
 
   return smart(Translator)
 }
-

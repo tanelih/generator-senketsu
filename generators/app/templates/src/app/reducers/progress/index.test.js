@@ -2,8 +2,8 @@
 /* eslint-disable arrow-body-style */
 
 import test from 'ava'
-import reducer, { initialState } from 'app/reducers/<%= name %>'
+import reducer, { initialState } from 'app/reducers/progress'
 
-test('reducers/<%= name %>', t => {
+test('reducers/progress', t => {
   return t.deepEqual(reducer(undefined, { }), initialState)
 })

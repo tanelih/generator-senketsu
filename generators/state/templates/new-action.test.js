@@ -1,3 +1,6 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable arrow-body-style */
+
 import test            from 'ava'
 import thunk           from 'redux-thunk'
 import createMockStore from 'redux-mock-store'

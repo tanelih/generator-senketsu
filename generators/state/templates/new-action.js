@@ -4,7 +4,7 @@ import createActionCreator from 'app/utils/create-action-creator'
 <%_ actions.forEach(function(action) { _%>
   <%_ if(action.async) { _%>
 /**
- * TODO Document me!
+ * TODO Documentation
  *
  * @returns {FSA} - Flux standard action.
  */
@@ -14,7 +14,7 @@ export const <%= action.creator %> = () => (dispatch, getState) => {
   <%_ } else { _%>
 
 /**
- * TODO Document me!
+ * TODO Documentation
  *
  * @returns {FSA} - Flux standard action.
  */

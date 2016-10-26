@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+
 import 'app/index.sass'
 
 import React                    from 'react'
@@ -30,4 +32,3 @@ const application = (
 )
 
 export default application
-

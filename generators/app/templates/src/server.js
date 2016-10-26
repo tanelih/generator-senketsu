@@ -9,4 +9,3 @@ require('babel-register')
 
 // start the server
 require('server/index')
-

@@ -30,7 +30,8 @@ module.exports = yo.Base.extend({
         name:    'options',
         message: 'Component options',
         choices: [
-          { name: 'Smart' },
+          { name: 'isStateful' },
+          { name: 'hasContext' },
         ],
       }
     ]
@@ -43,13 +44,17 @@ module.exports = yo.Base.extend({
 
   writing: function() {
     var file    = kebabCase(this.props.name.trim())
-    var isSmart = this.props.options.indexOf('Smart') >= 0
+    var isContainer = this.props.type === 'container'
+    var isStateful  = this.props.options.indexOf('isStateful') >= 0
+    var hasContext  = this.props.options.indexOf('hasContext') >= 0
 
     var context = {
-      file:    file,
-      type:    this.props.type,
-      name:    casing.pascalCase(this.props.name.trim()),
-      isSmart: isSmart,
+      file:        file,
+      type:        this.props.type,
+      name:        casing.pascalCase(this.props.name.trim()),
+      hasContext:  hasContext,
+      isStateful:  isStateful,
+      isContainer: isContainer,
     }
 
     var path = 'src/app/' + this.props.type + 's/' + file + '/'
