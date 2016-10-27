@@ -1,10 +1,12 @@
 import 'app/<%= type %>s/<%= file %>/style.sass'
 
-import React       from 'react'
 <%_ if (isContainer) { _%>
+import React       from 'react'
 import { connect } from 'react-redux'
 
 import translate from 'app/hoc/translate'
+<%_ } else { _%>
+import React from 'react'
 <%_ } _%>
 
 /**
@@ -14,22 +16,28 @@ import translate from 'app/hoc/translate'
  */
 <%_ if (isStateful || isContainer) { _%>
 export class <%= name%> extends React.Component {
+
   static propTypes = {
 
   }
+<%_ if (hasContext) { _%>
 
-  getInitialState () => {
-    return {
-
-    }
+  static contextTypes = {
+    translate: React.PropTypes.func.isRequired,
   }
+<%_ } _%>
+<%_ if (isStateful) { _%>
 
-  render () => {
-    return (
-      <div className="<%= file %>-<%= type %>" />
-    )
+  state = {
+
   }
-})
+<%_ } _%>
+
+  render = () => (
+    <div className="<%= file %>-<%= type %>" />
+  )
+}
+
 <%_ } else { _%>
 <%_ if (hasContext) { _%>
 export const <%= name %> = (props, context) => (
@@ -42,8 +50,8 @@ export const <%= name %> = props => (
 <%= name %>.propTypes = {
 
 }
+<%_ if (hasContext) { _%>
 
-<%_ if (hasContext && isContainer) { _%>
 <%= name %>.contextTypes = {
   translate: React.PropTypes.func.isRequired,
 }
