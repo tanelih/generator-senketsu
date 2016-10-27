@@ -33,9 +33,11 @@ export class <%= name%> extends React.Component {
   }
 <%_ } _%>
 
-  render = () => (
-    <div className="<%= file %>-<%= type %>" />
-  )
+  render() {
+    return (
+      <div className="<%= file %>-<%= type %>" />
+    )
+  }
 }
 
 <%_ } else { _%>

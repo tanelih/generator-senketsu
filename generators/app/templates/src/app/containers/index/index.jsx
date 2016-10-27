@@ -16,11 +16,13 @@ export class IndexContainer extends React.Component {
     translate: React.PropTypes.func.isRequired,
   }
 
-  render = () => (
-    <article className="index-container">
-      {this.context.translate('GREETING', 'FOR_YOU')}
-    </article>
-  )
+  render() {
+    return (
+      <article className="index-container">
+        {this.context.translate('GREETING', 'FOR_YOU')}
+      </article>
+    )
+  }
 }
 
 
