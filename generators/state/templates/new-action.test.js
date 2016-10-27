@@ -11,7 +11,6 @@ import {
 <%_ }) _%>
 } from 'app/actions/<%= name %>'
 
-
 const mockStore = createMockStore([ thunk ])
 
 <%_ actions.forEach(function(action) { _%>

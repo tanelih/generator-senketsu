@@ -1,6 +1,5 @@
 import createActionCreator from 'app/utils/create-action-creator'
 
-
 <%_ actions.forEach(function(action) { _%>
   <%_ if(action.async) { _%>
 /**

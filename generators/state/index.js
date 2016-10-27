@@ -60,8 +60,9 @@ module.exports = yo.Base.extend({
 
           return { async: async, creator: action, constant: type }
         }),
-        name:         kebabCase(props.name.trim()),
-        initialState: initialState[props.type],
+        name:             kebabCase(props.name.trim()),
+        initialState:     initialState[props.type],
+        initialStateType: props.type
       }
       return done()
     })

@@ -1,6 +1,17 @@
 import createReducer from 'app/utils/create-reducer'
 
+/**
+ * Initial state for the reducer.
+ *
+ * @type {<%= initialStateType %>}
+ */
+export const initialState = <%= initialState %>
 
+/**
+ * Map of handlers.
+ *
+ * @type {Object}
+ */
 const handlers = {
   <%_ actions.forEach(function(action) { _%>
     <%_ if(action.async) { _%>
@@ -10,7 +21,5 @@ const handlers = {
     <%_ } _%>
   <%_ }) _%>
 }
-
-export const initialState = <%= initialState %>
 
 export default createReducer(handlers, initialState)
