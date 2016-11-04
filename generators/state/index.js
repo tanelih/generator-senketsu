@@ -36,7 +36,7 @@ module.exports = yo.Base.extend({
       var initialState = {
         'Array':  '[ ]',
         'Object': '{ }',
-        'String': '""',
+        'String': '\'\'',
         'Number': '0',
       }
 

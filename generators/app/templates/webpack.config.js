@@ -39,6 +39,16 @@ module.exports = {
       },
       canPrint: false,
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        dead_code:     true,
+        drop_console:  true,
+        drop_debugger: true,
+      },
+      mangle:    true,
+      comments:  false,
+      sourceMap: false,
+    }),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
   ],
   resolve: {

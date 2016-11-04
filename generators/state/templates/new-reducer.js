@@ -5,7 +5,7 @@ import createReducer from 'app/utils/create-reducer'
  *
  * @type {<%= initialStateType %>}
  */
-export const initialState = <%= initialState %>
+export const initialState = <%- initialState %>
 
 /**
  * Map of handlers.
