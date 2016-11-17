@@ -1,19 +1,19 @@
 /* eslint-disable no-console */
 /* eslint-disable react/jsx-filename-extension */
 
-const path    = require('path')
+const path = require('path')
 const express = require('express')
 
-const React         = require('react')
-const ReactDOM      = require('react-dom/server')
-const Provider      = require('react-redux').Provider
+const React = require('react')
+const ReactDOM = require('react-dom/server')
+const Provider = require('react-redux').Provider
 const RouterContext = require('react-router').RouterContext
 
-const match                = require('react-router').match
-const createMemoryHistory  = require('react-router').createMemoryHistory
+const match = require('react-router').match
+const createMemoryHistory = require('react-router').createMemoryHistory
 const syncHistoryWithStore = require('react-router-redux').syncHistoryWithStore
 
-const routes      = require('app/routes').default
+const routes = require('app/routes').default
 const createStore = require('app/store').default
 
 /**
@@ -48,16 +48,16 @@ const template = (content, state) => `
  *
  * @type {Object}
  */
-const app = express()
+express()
 
   .use('/build',
     express.static(path.join(__dirname, '../../build')))
 
   .use((req, res, next) => {
-    const location   = req.url
+    const location = req.url
     const memhistory = createMemoryHistory(location)
-    const store      = createStore(memhistory)
-    const history    = syncHistoryWithStore(memhistory, store)
+    const store = createStore(memhistory)
+    const history = syncHistoryWithStore(memhistory, store)
 
     match({ history, routes, location }, (err, redirect, props) => {
       if (err) {

@@ -1,6 +1,6 @@
 import 'app/containers/index/style.sass'
 
-import React       from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import translate from 'app/hoc/translate'
@@ -13,18 +13,17 @@ import translate from 'app/hoc/translate'
 export class IndexContainer extends React.Component {
 
   static contextTypes = {
-    translate: React.PropTypes.func.isRequired,
+    translate: React.PropTypes.func.isRequired
   }
 
-  render() {
+  render () {
     return (
-      <article className="index-container">
+      <article className='index-container'>
         {this.context.translate('GREETING', 'FOR_YOU')}
       </article>
     )
   }
 }
-
 
 const smart = connect(
   state => ({

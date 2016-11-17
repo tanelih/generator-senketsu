@@ -11,10 +11,10 @@ if (typeof require.ensure !== 'function') {
  */
 export default [
   {
-    getComponent(location, done) {
+    getComponent (location, done) {
       require.ensure([], require =>
         done(null, require('app/containers/index').default))
     },
-    path: '/',
-  },
+    path: '/'
+  }
 ]

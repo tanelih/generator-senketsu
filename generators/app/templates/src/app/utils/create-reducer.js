@@ -1,4 +1,4 @@
-import recycle           from 'redux-recycle'
+import recycle from 'redux-recycle'
 import { handleActions } from 'redux-actions'
 
 /**
@@ -9,6 +9,6 @@ import { handleActions } from 'redux-actions'
  * @param   {Array<String>} resetOn      - Actions to reset the reducer state on.
  * @returns {Function}                   - Reducer function.
  */
-export default function createReducer(handlers, initialState, resetOn = []) {
+export default function createReducer (handlers, initialState, resetOn = []) {
   return recycle(handleActions(handlers, initialState), resetOn, initialState)
 }

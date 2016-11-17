@@ -1,8 +1,8 @@
 /* eslint-disable arrow-parens */
 /* eslint-disable arrow-body-style */
 
-import test            from 'ava'
-import thunk           from 'redux-thunk'
+import test from 'ava'
+import thunk from 'redux-thunk'
 import createMockStore from 'redux-mock-store'
 
 import { clearError } from 'app/actions/error'
@@ -14,6 +14,6 @@ test('actions/error::clearError', t => {
   store.dispatch(clearError('LOGIN'))
 
   return t.deepEqual(store.getActions(), [
-    { type: 'CLEAR_ERROR', payload: 'LOGIN' },
+    { type: 'CLEAR_ERROR', payload: 'LOGIN' }
   ])
 })

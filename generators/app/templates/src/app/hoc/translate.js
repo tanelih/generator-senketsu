@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { connect }          from 'react-redux'
+import { connect } from 'react-redux'
 
 /**
  * Make sure given target is an object.
@@ -29,7 +29,7 @@ const getDeepResource = (localization, key) => {
  * @param   {Object}   resource  - The translation resource object.
  * @returns {Function}           - The wrapped component.
  */
-export default function translate(component, resource = {}) {
+export default function translate (component, resource = {}) {
   /**
    * @class
    *
@@ -37,29 +37,29 @@ export default function translate(component, resource = {}) {
    */
   const Translator = React.createClass({
     propTypes: {
-      locale: PropTypes.string.isRequired,
+      locale: PropTypes.string.isRequired
     },
     childContextTypes: {
-      translate: PropTypes.func.isRequired,
+      translate: PropTypes.func.isRequired
     },
-    getChildContext() {
+    getChildContext () {
       return {
         translate: (...keys) => {
           const translation = keys.concat(this.props.locale).reduce(getDeepResource, resource)
-          return translation
-            || `Missing translation for [${keys.concat(this.props.locale).join(' >> ')}]`
-        },
+          return translation ||
+            `Missing translation for [${keys.concat(this.props.locale).join(' >> ')}]`
+        }
       }
     },
 
-    render() {
+    render () {
       return React.createElement(component, this.props)
-    },
+    }
   })
 
   const smart = connect(
     state => ({
-      locale: state.locale,
+      locale: state.locale
     }))
 
   return smart(Translator)

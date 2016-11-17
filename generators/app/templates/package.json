@@ -4,7 +4,8 @@
   "license": "MIT",
   "description": "<%= description %>",
   "scripts": {
-    "lint": "eslint src",
+    "lint": "standard",
+    "lint:fix": "standard --fix",
     "test": "npm run test:once",
     "test:once": "ava src/**/*.test.js",
     "test:auto": "ava --watch src/**/*.test.js",
@@ -15,6 +16,9 @@
   },
   "ava": {
     "require": "babel-register"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   },
   "dependencies": {
     "app-module-path": "2.1.0",
@@ -41,11 +45,6 @@
     "babel-preset-react-hmre": "1.1.1",
     "babel-preset-stage-2": "6.18.0",
     "css-loader": "0.25.0",
-    "eslint": "3.6.0",
-    "eslint-config-airbnb": "12.0.0",
-    "eslint-plugin-import": "1.16.0",
-    "eslint-plugin-jsx-a11y": "2.2.3",
-    "eslint-plugin-react": "6.4.1",
     "expect": "1.20.2",
     "extract-text-webpack-plugin": "1.0.1",
     "glob": "7.1.0",
@@ -58,6 +57,8 @@
     "postcss-font-magician": "1.5.0",
     "postcss-loader": "0.13.0",
     "sass-loader": "4.0.2",
-    "style-loader": "0.13.1"
+    "standard": "8.5.0",
+    "style-loader": "0.13.1",
+    "webpack": "1.13.3"
   }
 }

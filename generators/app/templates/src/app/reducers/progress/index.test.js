@@ -1,7 +1,7 @@
 /* eslint-disable arrow-parens */
 /* eslint-disable arrow-body-style */
 
-import test    from 'ava'
+import test from 'ava'
 import reducer from 'app/reducers/progress'
 
 test('reducers/progress', t => {

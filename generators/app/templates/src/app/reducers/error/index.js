@@ -13,8 +13,8 @@ export const initialState = []
  * @type {Object}
  */
 const handlers = {
-  ERROR:       (state, action) => state.concat(action.payload),
-  CLEAR_ERROR: (state, action) => state.filter(err => err.origin !== action.payload),
+  ERROR: (state, action) => state.concat(action.payload),
+  CLEAR_ERROR: (state, action) => state.filter(err => err.origin !== action.payload)
 }
 
 export default createReducer(handlers, initialState)

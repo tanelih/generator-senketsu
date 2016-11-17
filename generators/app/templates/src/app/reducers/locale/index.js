@@ -13,7 +13,7 @@ export const initialState = 'en'
  * @type {Object}
  */
 const handlers = {
-  SET_LOCALE: (locale, action) => action.payload,
+  SET_LOCALE: (locale, action) => action.payload
 }
 
 export default createReducer(handlers, initialState)

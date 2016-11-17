@@ -2,13 +2,13 @@
 
 import 'app/index.sass'
 
-import React                    from 'react'
-import { Provider }             from 'react-redux'
-import { Router, Route }        from 'react-router'
+import React from 'react'
+import { Provider } from 'react-redux'
+import { Router } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 
-import routes      from 'app/routes'
-import history     from 'app/history'
+import routes from 'app/routes'
+import history from 'app/history'
 import createStore from 'app/store'
 
 /**

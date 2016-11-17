@@ -8,7 +8,7 @@ import createReducer from 'app/utils/create-reducer'
  * @param   {Object}        action - Flux standard action.
  * @returns {Array<String>}        - The next state.
  */
-export default function progress(state = [], action) {
+export default function progress (state = [], action) {
   if (action.type === 'ERROR') {
     return state.filter(v => v !== action.payload.origin)
   }
