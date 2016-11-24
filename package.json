@@ -1,7 +1,7 @@
 {
   "name": "generator-senketsu",
   "license": "MIT",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Generator for React & Redux web applications.",
   "author": {
     "name": "Taneli Hartikainen",
